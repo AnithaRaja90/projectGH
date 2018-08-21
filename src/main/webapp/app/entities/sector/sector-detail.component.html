@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sector">
+            <h2><span jhiTranslate="projectGhApp.sector.detail.title">Sector</span> {{sector.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="projectGhApp.sector.sectorName">Sector Name</span></dt>
+                <dd>
+                    <span>{{sector.sectorName}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.sector.sectorAddress">Sector Address</span></dt>
+                <dd>
+                    <span>{{sector.sectorAddress}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.sector.sectorIncharge">Sector Incharge</span></dt>
+                <dd>
+                    <span>{{sector.sectorIncharge}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.sector.status">Status</span></dt>
+                <dd>
+                    <span>{{sector.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.sector.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{sector.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.sector.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <span>{{sector.modifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.sector.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{sector.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.sector.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{sector.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.sector.zonal">Zonal</span></dt>
+                <dd>
+                    <div *ngIf="sector.zonalId">
+                        <a [routerLink]="['/zonal', sector.zonalId, 'view']">{{sector.zonalZoneName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sector', sector.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

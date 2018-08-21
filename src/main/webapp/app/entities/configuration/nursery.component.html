@@ -1,0 +1,113 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="fa fa-align-justify"></i> Nursey List</strong>
+                    <button type="button" class="btn btn-sm btn-success float-right" 
+                        data-toggle="modal" (click)="createNursery()">
+                        <fa-icon [icon]="'plus'"></fa-icon> Add
+                    </button>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table font12">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Sector Name</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Type</th>
+                                <th>Incharge</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let value of nurserys; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{value.sectorSectorName}}</td>
+                                <td>{{value.nurseryName}}</td>
+                                <td>{{value.nurseryAddress}}</td>
+                                <td>{{value.nurseryTypePickListValue}}</td>
+                                <td></td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-ghost-info" data-toggle="modal" (click)="getNurseryValue(value)"><fa-icon [icon]="'pencil-alt'"></fa-icon> Edit</button>
+                                    <button type="button" class="btn btn-sm btn-ghost-danger" (click)="deleteNursery(value)"><fa-icon [icon]="'times'"></fa-icon> Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #nurseryModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Update {{nurseryObject.nurseryName}}</h6>
+                <button type="button" class="close" (click)="nurseryModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <input [(ngModel)]="nurseryObject.id" type="hidden" id="id" name="id" class="form-control">
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Zonal *</label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="nurseryObject.zoneId" id="zoneId" name="zoneId" class="form-control" 
+                            (change)="getSector(nurseryObject.zoneId)">
+                                <option value="0" disabled selected>Select Zonal Name</option>
+                                <option *ngFor="let zone of zonals" value={{zone.id}}>{{zone.zoneName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Sector *</label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="nurseryObject.sectorId" id="sectorId" name="sectorId" class="form-control">
+                                <option value="0" disabled selected>Select Sector Name</option>
+                                <option *ngFor="let sectorValue of sectors" value={{sectorValue.id}}>{{sectorValue.sectorName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Nursery Name *</label>
+                        <div class="col-md-9">
+                            <input [(ngModel)]="nurseryObject.nurseryName" type="text" id="text-input" name="text-input" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="textarea-input">Address</label>
+                        <div class="col-md-9">
+                            <textarea [(ngModel)]="nurseryObject.nurseryAddress" id="textarea-input" name="textarea-input" rows="3" class="form-control" placeholder="Address.."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name">Pick Name </label>
+                        <select [(ngModel)]="nurseryObject.pickListId" id="pickListId" name="pickListId" 
+                        class="form-control" (change)="getVariety(nurseryObject.pickListId)">
+                            <option value="0" disabled selected>Select</option>
+                            <option *ngFor="let pickList of pickLists" value={{pickList.id}}>{{pickList.pickListName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name">Nursery Type</label>
+                        <select [(ngModel)]="nurseryObject.nurseryTypeId" id="nurseryTypeId" name="nurseryTypeId" class="form-control">
+                            <option value="0" disabled selected>Description</option>
+                            <option *ngFor="let val of varietys" value={{val.id}}>{{val.pickListValue}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="nurseryModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+ 

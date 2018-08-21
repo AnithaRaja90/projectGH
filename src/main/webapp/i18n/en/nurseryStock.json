@@ -1,0 +1,34 @@
+
+{
+    "projectGhApp": {
+        "nurseryStock" : {
+            "home": {
+                "title": "Nursery Stocks",
+                "createLabel": "Create a new Nursery Stock",
+                "createOrEditLabel": "Create or edit a Nursery Stock"
+            },
+            "created": "A new Nursery Stock is created with identifier {{ param }}",
+            "updated": "A Nursery Stock is updated with identifier {{ param }}",
+            "deleted": "A Nursery Stock is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Nursery Stock {{ id }}?"
+            },
+            "detail": {
+                "title": "Nursery Stock"
+            },
+            "currentQuantity": "Current Quantity",
+            "addedQuantity": "Added Quantity",
+            "consumedQuantity": "Consumed Quantity",
+            "description": "Description",
+            "status": "Status",
+            "createdBy": "Created By",
+            "modifiedBy": "Modified By",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "nurseryStockDetails": "Nursery Stock Details",
+            "nursery": "Nursery",
+            "pickListVariety": "Pick List Variety",
+            "pickListCategory": "Pick List Category"
+        }
+    }
+}

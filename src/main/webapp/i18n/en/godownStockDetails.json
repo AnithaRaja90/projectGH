@@ -1,0 +1,30 @@
+
+{
+    "projectGhApp": {
+        "godownStockDetails" : {
+            "home": {
+                "title": "Godown Stock Details",
+                "createLabel": "Create a new Godown Stock Details",
+                "createOrEditLabel": "Create or edit a Godown Stock Details"
+            },
+            "created": "A new Godown Stock Details is created with identifier {{ param }}",
+            "updated": "A Godown Stock Details is updated with identifier {{ param }}",
+            "deleted": "A Godown Stock Details is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Godown Stock Details {{ id }}?"
+            },
+            "detail": {
+                "title": "Godown Stock Details"
+            },
+            "date": "Date",
+            "quantity": "Quantity",
+            "description": "Description",
+            "status": "Status",
+            "createdBy": "Created By",
+            "modifiedBy": "Modified By",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "godownStock": "Godown Stock"
+        }
+    }
+}

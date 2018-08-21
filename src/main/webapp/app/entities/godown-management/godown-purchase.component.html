@@ -1,0 +1,156 @@
+<div class="animated fadeIn">
+    <div class="row"> <!-- justify-content-center -->
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Godown Purchase List
+                  <button type="button" class="btn btn-sm btn-success float-right" 
+                  data-toggle="modal" (click)="createGodownPurchase()"><fa-icon [icon]="'plus'"></fa-icon> Add</button>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table font12">
+                        <thead>
+                            <tr>
+                                <th>S No.</th>
+                                <th>Date</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Owned By</th>
+                                <th>Vendor Name</th>
+                                <th>Vendor Address</th>
+                                <th>Phone</th>
+                                <th>Description</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let value of godownPurchases; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{value.date | date: 'dd/MM/yyyy'}}</td>
+                                <td>{{value.quantity}}</td>
+                                <td>{{value.price}}</td>
+                                <td>{{value.ownedBy}}</td>
+                                <td>{{value.vendorName}}</td>
+                                <td>{{value.vendorAddress}}</td>
+                                <td>{{value.vendorPhone}}</td>
+                                <td>{{value.description}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-ghost-info" data-toggle="modal" (click)="getGodownPurchaseValue(value)"><fa-icon [icon]="'pencil-alt'"></fa-icon> Edit</button>
+                                    <button type="button" class="btn btn-sm btn-ghost-danger" (click)="deleteGodownPurchase(value)"><fa-icon [icon]="'times'"></fa-icon> Delete</button>
+                                    <button type="button" class="btn btn-sm btn-ghost-warning" (click)="addStock(value)"><fa-icon [icon]="'plus'"></fa-icon> Add to Stock</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #godownPurchaseModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Create / Update {{godownPurchaseObject.name}}</h6>
+                <button type="button" class="close" (click)="godownPurchaseModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <input [(ngModel)]="godownPurchaseObject.id" type="hidden" id="id" name="id" class="form-control">
+                     <div class="form-group row">
+                        <label class="col-md-3" for="name">Date *</label>
+                        <!-- ngbDatepicker  #purchaseDateDp="ngbDatepicker"  -->
+                        <div class="input-group col-md-9">
+                            <input id="field_purchaseDate" type="text" class="form-control" name="purchaseDate" 
+                            [(ngModel)]="godownPurchaseObject.date" required/>
+                            <!-- <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="purchaseDateDp.toggle()">
+                                  <fa-icon [icon]="'calendar-alt'"></fa-icon>
+                                </button>
+                            </span> -->
+                        </div>
+                    </div>
+                    <!-- <div class="form-group col-sm-4">
+                        <label for="name">Variety * </label>
+                        <select [(ngModel)]="batch.pickListVarietyId" id="pickListVarietyId" name="pickListVarietyId" class="form-control"
+                        (change)="getCategory(batch.pickListVarietyId)" required>
+                          <option value="0" disabled selected>Select Variety Name</option>
+                          <option *ngFor="let val of varietys" value={{val.id}}>{{val.pickListValue}}</option>
+                        </select>
+                    </div> -->
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Quantity Type </label>
+                        <div class="col-md-3">
+                            <select [(ngModel)]="godownPurchaseObject.pickListId" id="pickListId" name="pickListId" class="form-control" 
+                            (change)="getVariety(godownPurchaseObject.pickListId)">
+                                <option value="0" disabled selected>Select Type</option>
+                                <option *ngFor="let type of pickLists" value={{type.id}}>{{type.pickListName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select [(ngModel)]="godownPurchaseObject.pickListQuantityTypeId" id="pickListQuantityTypeId" name="pickListQuantityTypeId" class="form-control" >
+                                <option value="0" disabled selected>Select Quantity Type</option>
+                                <option *ngFor="let type of varietys" value={{type.id}}>{{type.pickListValue}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input [(ngModel)]="godownPurchaseObject.quantity" type="text" id="quantity" name="quantity" 
+                            class="form-control" placeholder="Quantity">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Price</label>
+                        <div class="col-md-9">
+                            <input [(ngModel)]="godownPurchaseObject.price" type="text" id="price" name="price" 
+                            class="form-control" placeholder="Price">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Owned By</label>
+                        <div class="col-md-9">
+                            <input [(ngModel)]="godownPurchaseObject.ownedBy" type="text" id="ownedBy" name="ownedBy" 
+                            class="form-control" placeholder="Owned By">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">vendor Name</label>
+                        <div class="col-md-9">
+                            <input [(ngModel)]="godownPurchaseObject.vendorName" type="text" id="vendorName" name="vendorName" 
+                            class="form-control" placeholder="Vendor Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Vendor Address</label>
+                        <div class="col-md-9">
+                            <textarea [(ngModel)]="godownPurchaseObject.vendorAddress" type="text" id="vendorAddress" name="vendorAddress" 
+                            class="form-control" placeholder="Vendor Address">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Vendor Phone</label>
+                        <div class="col-md-9">
+                            <input [(ngModel)]="godownPurchaseObject.vendorPhone" type="text" id="vendorPhone" name="vendorPhone" 
+                            class="form-control" placeholder="Vendor Phone">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Description</label>
+                        <div class="col-md-9">
+                            <textarea [(ngModel)]="godownPurchaseObject.description" type="text" id="description" name="description" 
+                            class="form-control" placeholder="Description">
+                            </textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="godownPurchaseModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

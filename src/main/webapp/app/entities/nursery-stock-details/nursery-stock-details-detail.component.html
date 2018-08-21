@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="nurseryStockDetails">
+            <h2><span jhiTranslate="projectGhApp.nurseryStockDetails.detail.title">Nursery Stock Details</span> {{nurseryStockDetails.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.date">Date</span></dt>
+                <dd>
+                    <span>{{nurseryStockDetails.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{nurseryStockDetails.quantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.description">Description</span></dt>
+                <dd>
+                    <span>{{nurseryStockDetails.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.status">Status</span></dt>
+                <dd>
+                    <span>{{nurseryStockDetails.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{nurseryStockDetails.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <span>{{nurseryStockDetails.modifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{nurseryStockDetails.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{nurseryStockDetails.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.batch">Batch</span></dt>
+                <dd>
+                    <div *ngIf="nurseryStockDetails.batchId">
+                        <a [routerLink]="['/batch', nurseryStockDetails.batchId, 'view']">{{nurseryStockDetails.batchBatchName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nurseryStockDetails.nurseryStock">Nursery Stock</span></dt>
+                <dd>
+                    <div *ngIf="nurseryStockDetails.nurseryStockId">
+                        <a [routerLink]="['/nursery-stock', nurseryStockDetails.nurseryStockId, 'view']">{{nurseryStockDetails.nurseryStockId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/nursery-stock-details', nurseryStockDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+
+{
+    "projectGhApp": {
+        "sector" : {
+            "home": {
+                "title": "Sectors",
+                "createLabel": "Create a new Sector",
+                "createOrEditLabel": "Create or edit a Sector"
+            },
+            "created": "A new Sector is created with identifier {{ param }}",
+            "updated": "A Sector is updated with identifier {{ param }}",
+            "deleted": "A Sector is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sector {{ id }}?"
+            },
+            "detail": {
+                "title": "Sector"
+            },
+            "sectorName": "Sector Name",
+            "sectorAddress": "Sector Address",
+            "sectorIncharge": "Sector Incharge",
+            "status": "Status",
+            "createdBy": "Created By",
+            "modifiedBy": "Modified By",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "nurserys": "Nurserys",
+            "zonal": "Zonal"
+        }
+    }
+}

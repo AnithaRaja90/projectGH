@@ -1,0 +1,28 @@
+
+{
+    "projectGhApp": {
+        "pickList" : {
+            "home": {
+                "title": "Pick Lists",
+                "createLabel": "Create a new Pick List",
+                "createOrEditLabel": "Create or edit a Pick List"
+            },
+            "created": "A new Pick List is created with identifier {{ param }}",
+            "updated": "A Pick List is updated with identifier {{ param }}",
+            "deleted": "A Pick List is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Pick List {{ id }}?"
+            },
+            "detail": {
+                "title": "Pick List"
+            },
+            "pickListName": "Pick List Name",
+            "status": "Status",
+            "createdBy": "Created By",
+            "modifiedBy": "Modified By",
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "pickListValues": "Pick List Values"
+        }
+    }
+}

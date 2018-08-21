@@ -1,0 +1,76 @@
+{
+    "name": "NurseryStock",
+    "fields": [
+        {
+            "fieldName": "currentQuantity",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "addedQuantity",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "consumedQuantity",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "modifiedBy",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "nurseryStockDetails",
+            "otherEntityName": "nurseryStockDetails",
+            "otherEntityRelationshipName": "nurseryStock"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "nursery",
+            "otherEntityName": "nursery",
+            "otherEntityField": "nurseryName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "pickListVariety",
+            "otherEntityName": "pickListValue",
+            "otherEntityField": "pickListValue"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "pickListCategory",
+            "otherEntityName": "pickListValue",
+            "otherEntityField": "pickListValue"
+        }
+    ],
+    "changelogDate": "20180818124915",
+    "entityTableName": "nursery_stock",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

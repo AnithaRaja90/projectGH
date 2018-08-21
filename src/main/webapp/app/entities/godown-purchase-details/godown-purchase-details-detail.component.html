@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="godownPurchaseDetails">
+            <h2><span jhiTranslate="projectGhApp.godownPurchaseDetails.detail.title">Godown Purchase Details</span> {{godownPurchaseDetails.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.quantity">Quantity</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.quantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.date">Date</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.price">Price</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.price}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.ownedBy">Owned By</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.ownedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.vendorName">Vendor Name</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.vendorName}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.vendorAddress">Vendor Address</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.vendorAddress}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.vendorPhone">Vendor Phone</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.vendorPhone}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.description">Description</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.status">Status</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.modifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{godownPurchaseDetails.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.pickListVariety">Pick List Variety</span></dt>
+                <dd>
+                    <div *ngIf="godownPurchaseDetails.pickListVarietyId">
+                        <a [routerLink]="['/pick-list-value', godownPurchaseDetails.pickListVarietyId, 'view']">{{godownPurchaseDetails.pickListVarietyPickListValue}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.pickListCategory">Pick List Category</span></dt>
+                <dd>
+                    <div *ngIf="godownPurchaseDetails.pickListCategoryId">
+                        <a [routerLink]="['/pick-list-value', godownPurchaseDetails.pickListCategoryId, 'view']">{{godownPurchaseDetails.pickListCategoryPickListValue}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.pickListQuantityType">Pick List Quantity Type</span></dt>
+                <dd>
+                    <div *ngIf="godownPurchaseDetails.pickListQuantityTypeId">
+                        <a [routerLink]="['/pick-list-value', godownPurchaseDetails.pickListQuantityTypeId, 'view']">{{godownPurchaseDetails.pickListQuantityTypePickListValue}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.godownPurchaseDetails.godown">Godown</span></dt>
+                <dd>
+                    <div *ngIf="godownPurchaseDetails.godownId">
+                        <a [routerLink]="['/godown', godownPurchaseDetails.godownId, 'view']">{{godownPurchaseDetails.godownName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/godown-purchase-details', godownPurchaseDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

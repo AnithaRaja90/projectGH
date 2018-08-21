@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="nursery">
+            <h2><span jhiTranslate="projectGhApp.nursery.detail.title">Nursery</span> {{nursery.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="projectGhApp.nursery.nurseryName">Nursery Name</span></dt>
+                <dd>
+                    <span>{{nursery.nurseryName}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.nurseryAddress">Nursery Address</span></dt>
+                <dd>
+                    <span>{{nursery.nurseryAddress}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.nurseryIncharge">Nursery Incharge</span></dt>
+                <dd>
+                    <span>{{nursery.nurseryIncharge}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.status">Status</span></dt>
+                <dd>
+                    <span>{{nursery.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{nursery.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <span>{{nursery.modifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{nursery.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{nursery.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.sector">Sector</span></dt>
+                <dd>
+                    <div *ngIf="nursery.sectorId">
+                        <a [routerLink]="['/sector', nursery.sectorId, 'view']">{{nursery.sectorSectorName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.nursery.nurseryType">Nursery Type</span></dt>
+                <dd>
+                    <div *ngIf="nursery.nurseryTypeId">
+                        <a [routerLink]="['/pick-list-value', nursery.nurseryTypeId, 'view']">{{nursery.nurseryTypePickListValue}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/nursery', nursery.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="shadeArea">
+            <h2><span jhiTranslate="projectGhApp.shadeArea.detail.title">Shade Area</span> {{shadeArea.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="projectGhApp.shadeArea.noOfSeedlings">No Of Seedlings</span></dt>
+                <dd>
+                    <span>{{shadeArea.noOfSeedlings}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.date">Date</span></dt>
+                <dd>
+                    <span>{{shadeArea.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.status">Status</span></dt>
+                <dd>
+                    <span>{{shadeArea.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{shadeArea.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <span>{{shadeArea.modifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{shadeArea.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{shadeArea.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.damage">Damage</span></dt>
+                <dd>
+                    <span>{{shadeArea.damage}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.saplings">Saplings</span></dt>
+                <dd>
+                    <span>{{shadeArea.saplings}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.shadeArea.batch">Batch</span></dt>
+                <dd>
+                    <div *ngIf="shadeArea.batchId">
+                        <a [routerLink]="['/batch', shadeArea.batchId, 'view']">{{shadeArea.batchBatchName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/shade-area', shadeArea.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

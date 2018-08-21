@@ -1,0 +1,39 @@
+<div class="animated fadeIn">
+    <div class="row"> <!-- justify-content-center -->
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Nursery Stock List
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table font12">
+                        <thead>
+                            <tr>
+                                <th>S No.</th>
+                                <th>Nursery Name</th>
+                                <th>Variety</th>
+                                <th>Category</th>
+                                <th>Current Quantity</th>
+                                <th>Added Quantity</th>
+                                <th>Consumed Quantity</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let value of nurseryStocks; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{value.nurseryNurseryName}}</td>
+                                <td>{{value.pickListVarietyPickListValue}}</td>
+                                <td>{{value.pickListCategoryPickListValue}}</td>
+                                <td>{{value.currentQuantity}}</td>
+                                <td>{{value.addedQuantity}}</td>
+                                <td>{{value.consumedQuantity}}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

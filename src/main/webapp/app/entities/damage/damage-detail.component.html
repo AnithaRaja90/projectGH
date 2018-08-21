@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="damage">
+            <h2><span jhiTranslate="projectGhApp.damage.detail.title">Damage</span> {{damage.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="projectGhApp.damage.noOfQuantity">No Of Quantity</span></dt>
+                <dd>
+                    <span>{{damage.noOfQuantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.damage.date">Date</span></dt>
+                <dd>
+                    <span>{{damage.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.damage.status">Status</span></dt>
+                <dd>
+                    <span>{{damage.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.damage.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{damage.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.damage.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <span>{{damage.modifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.damage.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{damage.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.damage.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{damage.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.damage.batch">Batch</span></dt>
+                <dd>
+                    <div *ngIf="damage.batchId">
+                        <a [routerLink]="['/batch', damage.batchId, 'view']">{{damage.batchBatchName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.damage.description">Description</span></dt>
+                <dd>
+                    <div *ngIf="damage.descriptionId">
+                        <a [routerLink]="['/pick-list-value', damage.descriptionId, 'view']">{{damage.descriptionPickListValue}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/damage', damage.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

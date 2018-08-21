@@ -1,0 +1,253 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Pick List
+                    <button type="button" class="btn btn-sm btn-success float-right" 
+                    data-toggle="modal" (click)="createPickList()"><fa-icon [icon]="'plus'"></fa-icon> Add
+                    </button>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table font12">
+                        <thead>
+                            <tr>
+                                <th>S No.</th>
+                                <th>Name</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pickList of pickLists; let l = index">
+                                <td>{{l+1}}</td>
+                                <td>{{pickList.pickListName}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-ghost-info" data-toggle="modal" (click)="getPickListValue(pickList)"><fa-icon [icon]="'pencil-alt'"></fa-icon> Edit</button>
+                                    <button type="button" class="btn btn-sm btn-ghost-danger" (click)="deletePickList(pickList)"><fa-icon [icon]="'times'"></fa-icon> Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> MotherBed List
+                    <button type="button" class="btn btn-sm btn-success float-right" 
+                    data-toggle="modal" (click)="showMotherBedCreateForm()"><fa-icon [icon]="'plus'"></fa-icon> Add
+                    </button>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table font12">
+                        <thead>
+                            <tr>
+                                <th>S No.</th>
+                                <th>Nursery name</th>
+                                <th>Value</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let motherBed of motherBedList; let l = index">
+                                <td>{{l+1}}</td>
+                                <td>{{motherBed.nurseryNurseryName}}</td>
+                                <td>{{motherBed.value}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-ghost-info" data-toggle="modal"><fa-icon [icon]="'pencil-alt'"></fa-icon> Edit</button>
+                                    <button type="button" class="btn btn-sm btn-ghost-danger"><fa-icon [icon]="'times'"></fa-icon> Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Pick List Value
+                    <button type="button" class="btn btn-sm btn-success float-right" 
+                    data-toggle="modal" (click)="createPickListValue()"><fa-icon [icon]="'plus'"></fa-icon> Add
+                    </button>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table font12">
+                        <thead>
+                            <tr>
+                                <th>S No.</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                                <th>Variety</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pickListvalue of pickListValues; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{pickListvalue.pickListPickListName}}</td>
+                                <td>{{pickListvalue.pickListValue}}</td>
+                                <td>{{pickListvalue.pickValuePickListValue}}</td>
+                                <td>
+                                    <button type="button"  class="btn btn-sm btn-ghost-success" data-toggle="modal" (click)="openChildModel(pickListvalue)"><fa-icon [icon]="'plus'"></fa-icon> Add</button>
+                                    <button type="button"  class="btn btn-sm btn-ghost-info" data-toggle="modal" (click)="getPickValue(pickListvalue)"><fa-icon [icon]="'pencil-alt'"></fa-icon> Edit</button>
+                                    <button type="button" class="btn btn-sm btn-ghost-danger" (click)="deletePickListValue(pickListvalue)"><fa-icon [icon]="'times'"></fa-icon> Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #pickListModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Create/Update {{pickListObject.pickListName}}</h6>
+                <button type="button" class="close" (click)="pickListModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <input [(ngModel)]="pickListObject.id" type="hidden" id="id" name="id" class="form-control">
+                    <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="text-input">Name *</label>
+                    <div class="col-md-9">
+                        <input [(ngModel)]="pickListObject.pickListName" type="text" id="pickListName" name="pickListName" class="form-control" placeholder="Name">
+                    </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="pickListModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="savePickList()">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div bsModal #pickListValueModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Create/Update {{pickListValueObject.pickListValue}}</h6>
+                <button type="button" class="close" (click)="pickListValueModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <input [(ngModel)]="pickListValueObject.id" type="hidden" id="id" name="id" class="form-control">
+                    <div *ngIf="!pickListValueObject.id" class="form-group row">
+                        <label class="col-md-4 col-form-label" for="select1">PickList Name *</label>
+                        <div class="col-md-8">
+                        <select [(ngModel)]="pickListValueObject.pickListId" id="pickListId" name="pickListId" class="form-control">
+                            <option value="0" disabled selected>Select PickList Name</option>
+                            <option *ngFor="let val of pickLists" value={{val.id}}>{{val.pickListName}}</option>
+                        </select>
+                        </div>    
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label" for="text-input">Name *</label>
+                        <div class="col-md-8">
+                            <input [(ngModel)]="pickListValueObject.pickListValue" type="text" id="pickListValue" 
+                            name="pickListValue" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="pickListValueModal.hide()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="savePickValue()">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+  
+<div bsModal #subPickListModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Add Sub Category</h6>
+                <button type="button" class="close" (click)="subPickListModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <input [(ngModel)]="pickListValueObject.id" type="hidden" id="id" name="id" class="form-control">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label" for="text-input">Category Name *</label>
+                        <div class="col-md-8">
+                            <input [(ngModel)]="pickListValueObject.subChildValue" type="text" id="subChildValue" 
+                            name="subChildValue" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="subPickListModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="addChild(pickListValueObject)">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div bsModal #motherBedModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Create/Update {{pickListObject.pickListName}}</h6>
+                <button type="button" class="close" (click)="motherBedModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <input [(ngModel)]="motherBedObject.id" type="hidden" id="id" name="id" class="form-control">
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Zonal *</label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="motherBedObject.zoneId" id="zoneId" name="zoneId" class="form-control" 
+                            (change)="getSector(motherBedObject.zoneId)">
+                                <option value="0" disabled selected>Select Zonal Name</option>
+                                <option *ngFor="let zone of zonals" value={{zone.id}}>{{zone.zoneName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Sector *</label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="motherBedObject.sectorId" id="sectorId" name="sectorId" 
+                            class="form-control" (change)="getNursery(motherBedObject.sectorId)">
+                                <option value="0" disabled selected>Select Sector Name</option>
+                                <option *ngFor="let sectorValue of sectors" value={{sectorValue.id}}>{{sectorValue.sectorName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name">Nursery *</label>
+                        <select [(ngModel)]="motherBedObject.nurseryId" id="nurseryId" name="nurseryId" class="form-control" required>
+                            <option value="0" disabled selected>Select Nursery Name</option>
+                            <option *ngFor="let nursery of nurserys" value={{nursery.id}}>{{nursery.nurseryName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Name *</label>
+                        <div class="col-md-9">
+                            <input [(ngModel)]="motherBedObject.value" type="text" id="value" name="value" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="motherBedModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="saveMotherBed()">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,85 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Sector List
+                    <button type="button" class="btn btn-sm btn-success float-right" 
+                    data-toggle="modal" (click)="createSector()">
+                        <fa-icon [icon]="'plus'"></fa-icon> Add
+                    </button>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table font12">
+                        <thead>
+                            <tr>
+                                <th>S No.</th>
+                                <th>Zonal Name</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Incharge</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sector of sectors; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{sector.zonalZoneName}}</td>
+                                <td>{{sector.sectorName}}</td>
+                                <td>{{sector.sectorAddress}}</td>
+                                <td></td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-ghost-info" data-toggle="modal" (click)="getSectorValue(sector)"><fa-icon [icon]="'pencil-alt'"></fa-icon> Edit</button>
+                                    <button type="button" class="btn btn-sm btn-ghost-danger" (click)="deleteSector(sector)"><fa-icon [icon]="'times'"></fa-icon> Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div bsModal #sectorModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Create/Update {{sectorObject.sectorName}}</h6>
+                <button type="button" class="close" (click)="sectorModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <input [(ngModel)]="sectorObject.id" type="hidden" id="id" name="id" class="form-control">
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="select1">Zonal *</label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="sectorObject.zonalId" id="zonalId" name="zonalId" class="form-control">
+                                <option value="0" disabled selected>Select Zonal Name</option>
+                                <option *ngFor="let zone of zonals" value={{zone.id}}>{{zone.zoneName}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="text-input">Sector Name *</label>
+                        <div class="col-md-9">
+                            <input [(ngModel)]="sectorObject.sectorName" type="text" id="text-input" name="text-input" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="textarea-input">Address</label>
+                        <div class="col-md-9">
+                            <textarea [(ngModel)]="sectorObject.sectorAddress" id="textarea-input" name="textarea-input" rows="3" class="form-control" placeholder="Address.."></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="sectorModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,63 @@
+{
+    "name": "Godown",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "incharge",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "modifiedBy",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updatedAt",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "godownPurchaseDetails",
+            "otherEntityName": "godownPurchaseDetails",
+            "otherEntityRelationshipName": "godown"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "godownStocks",
+            "otherEntityName": "godownStock",
+            "otherEntityRelationshipName": "godown"
+        }
+    ],
+    "changelogDate": "20180818124917",
+    "entityTableName": "godown",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

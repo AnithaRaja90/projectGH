@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="motherBed">
+            <h2><span jhiTranslate="projectGhApp.motherBed.detail.title">Mother Bed</span> {{motherBed.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="projectGhApp.motherBed.value">Value</span></dt>
+                <dd>
+                    <span>{{motherBed.value}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.motherBed.status">Status</span></dt>
+                <dd>
+                    <span>{{motherBed.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.motherBed.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{motherBed.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.motherBed.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <span>{{motherBed.modifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.motherBed.createdAt">Created At</span></dt>
+                <dd>
+                    <span>{{motherBed.createdAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.motherBed.updatedAt">Updated At</span></dt>
+                <dd>
+                    <span>{{motherBed.updatedAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="projectGhApp.motherBed.nursery">Nursery</span></dt>
+                <dd>
+                    <div *ngIf="motherBed.nurseryId">
+                        <a [routerLink]="['/nursery', motherBed.nurseryId, 'view']">{{motherBed.nurseryNurseryName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/mother-bed', motherBed.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
